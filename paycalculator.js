@@ -1,17 +1,45 @@
 "use strict"
 
-let hoursworked= prompt("Plz enter hours:");
-let hourlywage="22.589654";
-let weeklywage=(hoursworked*hourlywage).toFixed(2);
+let standardWorkWeek = 40
+let hourlyWage = prompt("What is your hourly rate?");
+let hoursWorked = prompt("How many hours did you work?");
+let weeklyAmount = determineTotalAmount(hourlyWage, hoursWorked);
+let overTimeIsEarned = determineIfOverTimeIsEarned(standardWorkWeek, hoursWorked)
+let amountOfOverTime = determineAmountOfOverTime(standardWorkWeek, hoursWorked)
+let totalAmount;
 
-console.log(weeklywage);
+function determineTotalAmount(hourlyWage, hoursWorked){
+	let weeklyAmount = hourlyWage * hoursWorked;
+	return weeklyAmount;
+}
 
-let monthlywage=(weeklywage*4).toFixed(2);
+function determineIfOverTimeIsEarned(standardWorkWeek, hoursWorked){
+	let overTimeIsEarned = hoursWorked > standardWorkWeek
+	return overTimeIsEarned
+}
 
-console.log(monthlywage);
+function determineAmountOfOverTime(standardWorkWeek, hoursWorked){
+	let amountOfOverTime = hoursWorked - standardWorkWeek
+	return amountOfOverTime
+}
 
-// let sum = prompt ("hoursworked");
-// if sum !=null) {
-// 	document .getElmentById("demo").innerHTML =
-// 	"hourlywage" * 
-// }
+if(overTimeIsEarned === True){
+	totalAmount = amountOfOverTime * (hourlyWage * 1.5) + (hourlyWage * standardWorkWeek)
+}
+else{
+	totalAmount = hourlyWage * standardWorkWeek
+}
+
+
+//if(hoursWorked > standardWorkWeek){
+//	totalAmount = (hoursWorked - standardWorkWeek) *(hourlyWage * 1.5) + (hourlyWage * standardWorkWeek)
+//}
+//else{
+//	totalAmount = hourlyWage * standardWorkWeek
+//}
+
+
+console.log(amountOfOverTime);
+console.log(overTimeIsEarned);
+console.log(weeklyAmount);
+console.log(totalAmount);
